@@ -1,0 +1,23 @@
+# Taking marks input
+marks = float(input("Enter your marks (0–100): "))
+
+# Calculating grade and message
+if marks >= 90:
+    grade = "A"
+    message = "Excellent work! Keep shining ✨"
+elif marks >= 80:
+    grade = "B"
+    message = "Great job! You're doing really well 👍"
+elif marks >= 70:
+    grade = "C"
+    message = "Good effort! Keep improving 📚"
+elif marks >= 60:
+    grade = "D"
+    message = "You passed! With a little more practice, you can do even better 💪"
+else:
+    grade = "F"
+    message = "Don't worry, failure is a step towards success. Keep trying—you can do it! 🌟"
+
+# Display result
+print(f"Your Grade: {grade}")
+print(f"Message: {message}")
