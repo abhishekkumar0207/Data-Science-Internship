@@ -1,0 +1,29 @@
+# Step 1: Import pandas
+import pandas as pd
+
+# Step 2: Load the dataset
+df = pd.read_csv('sales_data.csv')
+
+# Step 3: Inspect the first few rows
+print(df.head())
+
+# Step 4: Calculate Total Sales for each row
+df['Total_Sale'] = df['Quantity'] * df['Price']
+
+# Step 5: Calculate overall Total Sales
+total_sales = df['Total_Sale'].sum()
+print(f"Total Sales: ${total_sales}")
+
+# Step 6: Find best-selling product (by quantity sold)
+best_selling = df.groupby('Product')['Quantity'].sum().idxmax()
+best_quantity = df.groupby('Product')['Quantity'].sum().max()
+print(f"Best-Selling Product: {best_selling} (Total Quantity Sold: {best_quantity})")
+
+# Step 7: Create a basic report
+report = df.groupby('Product').agg(
+    Total_Quantity=('Quantity', 'sum'),
+    Total_Revenue=('Total_Sale', 'sum')
+).sort_values(by='Total_Revenue', ascending=False)
+
+print("\nSales Report:")
+print(report)
